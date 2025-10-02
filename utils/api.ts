@@ -17,6 +17,13 @@ export type Product = {
 
 export const getProducts = async (): Promise<Product[]> => {
   const response = await fetch(`${API_URL}/products`);
+
+  // @ts-ignore
+  await Promise((resolve) =>
+    setTimeout(() => {
+      resolve();
+    }, 1000),
+  );
   return response.json();
 };
 

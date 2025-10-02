@@ -20,9 +20,7 @@ const ProductShimmer = () => {
           style={styles.title}
           shimmerColors={["#ebebeb", "#ddd", "#ebebeb"]}
         />
-      </View>
 
-      <View style={styles.ratingContainer}>
         <Placeholder
           style={styles.rating}
           shimmerColors={["#ebebeb", "#ddd", "#ebebeb"]}
@@ -60,7 +58,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: CARD_WIDTH,
     borderTopLeftRadius: 12,
-    borderBottomLeftRadius: 12,
+    borderTopRightRadius: 12,
   },
   contentContainer: {
     padding: 12,
@@ -70,10 +68,6 @@ const styles = StyleSheet.create({
     height: 20,
     width: "85%",
     borderRadius: 4,
-  },
-  ratingContainer: {
-    flexDirection: "row",
-    alignItems: "center",
   },
   rating: {
     height: 16,
