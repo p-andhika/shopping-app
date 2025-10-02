@@ -96,21 +96,19 @@ export default function Index() {
         </ScrollView>
       </View>
 
-      <ProductGridShimmer />
-
-      {/* {isFetching ? ( */}
-      {/*   <ProductGridShimmer /> */}
-      {/* ) : ( */}
-      {/*   <FlashList */}
-      {/*     data={filteredProduct} */}
-      {/*     renderItem={renderProducts} */}
-      {/*     contentContainerStyle={{ padding: 8 }} */}
-      {/*     numColumns={2} */}
-      {/*     keyExtractor={(item) => item.id.toString()} */}
-      {/*     onRefresh={refetchProduct} */}
-      {/*     refreshing={isRefetching} */}
-      {/*   /> */}
-      {/* )} */}
+      {isFetching ? (
+        <ProductGridShimmer />
+      ) : (
+        <FlashList
+          data={filteredProduct}
+          renderItem={renderProducts}
+          contentContainerStyle={{ padding: 8 }}
+          numColumns={2}
+          keyExtractor={(item) => item.id.toString()}
+          onRefresh={refetchProduct}
+          refreshing={isRefetching}
+        />
+      )}
     </View>
   );
 }

@@ -16,14 +16,14 @@ export type Product = {
 };
 
 export const getProducts = async (): Promise<Product[]> => {
-  const response = await fetch(`${API_URL}/products`);
-
-  // @ts-ignore
-  await Promise((resolve) =>
+  // Simulate delay, so we can see how shimmer works.
+  await new Promise<void>((resolve) =>
     setTimeout(() => {
       resolve();
-    }, 1000),
+    }, 3000),
   );
+
+  const response = await fetch(`${API_URL}/products`);
   return response.json();
 };
 
