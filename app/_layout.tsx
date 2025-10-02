@@ -21,6 +21,11 @@ export default function RootLayout() {
           options={{
             title: "Galactic Products",
             headerShadowVisible: false,
+            headerSearchBarOptions: {
+              placeholder: "Search product...",
+              hideWhenScrolling: false,
+              hideNavigationBar: false,
+            },
           }}
         />
       </Stack>
