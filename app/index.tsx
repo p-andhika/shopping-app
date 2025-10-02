@@ -14,6 +14,7 @@ import ProductCard from "@/components/product-card";
 import { COLORS } from "@/utils/colors";
 import { Stack } from "expo-router";
 import { useHeaderHeight } from "@react-navigation/elements";
+import { ProductGridShimmer } from "@/components/product-list-shimmer";
 
 export default function Index() {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -24,6 +25,7 @@ export default function Index() {
     data: products,
     refetch: refetchProduct,
     isRefetching,
+    isFetching,
   } = useQuery({
     queryKey: ["products"],
     queryFn: getProducts,
@@ -94,15 +96,19 @@ export default function Index() {
         </ScrollView>
       </View>
 
-      <FlashList
-        data={filteredProduct}
-        renderItem={renderProducts}
-        contentContainerStyle={{ padding: 8 }}
-        numColumns={2}
-        keyExtractor={(item) => item.id.toString()}
-        onRefresh={refetchProduct}
-        refreshing={isRefetching}
-      />
+      {isFetching ? (
+        <ProductGridShimmer />
+      ) : (
+        <FlashList
+          data={filteredProduct}
+          renderItem={renderProducts}
+          contentContainerStyle={{ padding: 8 }}
+          numColumns={2}
+          keyExtractor={(item) => item.id.toString()}
+          onRefresh={refetchProduct}
+          refreshing={isRefetching}
+        />
+      )}
     </View>
   );
 }
