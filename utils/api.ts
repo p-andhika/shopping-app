@@ -27,7 +27,13 @@ export const getProducts = async (): Promise<Product[]> => {
   return response.json();
 };
 
-export const getProduct = async (id: number): Promise<Product[]> => {
+export const getProduct = async (id: number): Promise<Product> => {
+  await new Promise<void>((resolve) =>
+    setTimeout(() => {
+      resolve();
+    }, 5000),
+  );
+
   const response = await fetch(`${API_URL}/products/${id}`);
   return response.json();
 };
