@@ -1,6 +1,7 @@
 import { Stack } from "expo-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useReactQueryDevTools } from "@dev-plugins/react-query";
+import CartButton from "@/components/cart-button";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -26,6 +27,7 @@ export default function RootLayout() {
               hideWhenScrolling: false,
               hideNavigationBar: false,
             },
+            headerRight: () => <CartButton />,
           }}
         />
 
