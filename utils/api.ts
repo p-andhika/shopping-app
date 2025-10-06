@@ -31,7 +31,7 @@ export const getProduct = async (id: number): Promise<Product> => {
   await new Promise<void>((resolve) =>
     setTimeout(() => {
       resolve();
-    }, 3000),
+    }, 500),
   );
 
   const response = await fetch(`${API_URL}/products/${id}`);

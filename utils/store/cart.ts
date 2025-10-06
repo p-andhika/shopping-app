@@ -27,7 +27,8 @@ export const useCartStore = create<CartState>()(
           set((state) => {
             const hasProduct = state.products.find((p) => p.id === product.id);
             const newTotal =
-              +state.total.toFixed(2) + +product.price.toFixed(2);
+              +Number(state.total.toFixed(2)) +
+              +Number(product.price.toFixed(2));
             const newCount = state.count + 1;
 
             if (hasProduct) {
@@ -50,8 +51,9 @@ export const useCartStore = create<CartState>()(
         reduceProduct: (product) => {
           set((state) => {
             const newTotal =
-              +state.total.toFixed(2) - +product.price.toFixed(2);
-            const newCount = state.count + 1;
+              +Number(state.total.toFixed(2)) -
+              +Number(product.price.toFixed(2));
+            const newCount = state.count - 1;
 
             return {
               products: state.products
